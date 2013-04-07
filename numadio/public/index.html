@@ -21,7 +21,9 @@ and open the template in the editor.
             </div>
             <div class="row">
                 <p>番組にメッセージを送ることができます。裏でTwitterを使っているので、文字数制限があります。注意してください。</p>
-                <textarea rows="4" style="width: 400px" id="message"></textarea>
+                <p>マナーと節度を守ってね☆</p>
+                <input type="text" id="username" placeholder="お名前"/><br>
+                <textarea rows="4" style="width: 400px" id="message" placeholder="メッセージ"></textarea>
                 <div><input type="submit" value="送信" id="postButton"/></div>
                 <div id="postFinishMessage" style="display: none">送信完了。また送ってね。</div>
                 <div id="postingMessage" style="display: none">送信中...</div>
@@ -35,7 +37,8 @@ and open the template in the editor.
                 if(message.length < 1){
                     postFinish();
                 }
-                var data ={"text" : message};
+                var userName = $("#username").val();
+                var data ={"text" : userName + ":\n" + message};
                 $.ajax({
                     contentType:"application/json",
                     data:JSON.stringify(data),
