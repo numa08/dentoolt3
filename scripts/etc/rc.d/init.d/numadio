@@ -18,7 +18,7 @@ CUR_DIR=`pwd`
 start() {
 	echo -n $"Starting ${prog}:"
 
-	jsvc  -home ${JAVA_HOME} -cp ${CLASSPATH}:${numadio}/* -pidfile ${numadio_PID} ${numadio_MAIN} ${CUR_DIR}
+	jsvc  -home ${JAVA_HOME} -cp ${CLASSPATH}:${NUMADIO}/* -pidfile ${NUMADIO_PID} ${NUMADIO_MAIN} ${CUR_DIR}
 	RETVAL=$?
 	if [[ $RETVAL == 0 ]]; then
 		echo -e "\t\t [\033[1;32m  OK  \033[0m]"
