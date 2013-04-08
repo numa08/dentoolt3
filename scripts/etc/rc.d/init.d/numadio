@@ -31,7 +31,7 @@ start() {
 stop() {
 	echo -n $"Stopping ${prog}"
 
-	jsvc  -stop -pidfile ${numadio_PID} ${numadio_MAIN}
+	jsvc  -stop -pidfile ${NUMADIO_PID} ${NUMADIO_MAIN}
 	RETVAL=$?
 	if [[ $RETVAL == 0 ]]; then
 		echo -e "\t\t [\033[1;32m  OK  \033[0m]"
