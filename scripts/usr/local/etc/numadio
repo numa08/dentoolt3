@@ -1,0 +1,4 @@
+#config file for numadio
+NUMADIO=/usr/local/bin/numadio/lib
+NUMADIO_PID=/usr/local/etc/numadio.pid
+NUMADIO_MAIN=controllers.ServerDaemon
