@@ -20,7 +20,7 @@ and open the template in the editor.
                 <p>Dentoo.lt 2013/4/14</p>
             </div>
             <div class="row">
-                <p>マナーと節度を守ってね☆</p>
+                <p>ゆっくり楽しんでいってくれ</p>
                 <input type="text" id="username" placeholder="お名前"/><br>
                 <textarea rows="4" style="width: 400px" id="message" placeholder="メッセージ"></textarea>
                 <div><input type="submit" value="送信" id="postButton"/></div>
@@ -33,10 +33,11 @@ and open the template in the editor.
                 $("#postButton").css("display", "none");
                 $("#postingMessage").css("display","");
                 var message = $("#message").val();
-                if(message.length < 1){
-                    postFinish();
-                }
                 var userName = $("#username").val();
+                if(message.length < 1 || userName.length < 1){
+                    postFinish();
+                    return;
+                }
                 var data ={"text" : userName + ":\n" + message};
                 $.ajax({
                     contentType:"application/json",
