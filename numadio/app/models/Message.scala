@@ -23,7 +23,4 @@ object TwitterAuth {
 	val	ConsumerSecret = "consumer_secret"
 	val	AccessToken = "access_token"
 	val	AccessTokenSecret = "access_token_secret"
-=======
-	def send = null
->>>>>>> parent of b322f53... とうこう部分を実装
 }
