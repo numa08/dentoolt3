@@ -1,7 +1,9 @@
 package net.numa08.dentoolt.model
 
+import twitter4j.TwitterFactory
+import twitter4j.conf.ConfigurationBuilder
+
 case class Message(text:String) {
-<<<<<<< HEAD
 	def send = {
 		val config = new ConfigurationBuilder()
 						.setOAuthConsumerKey(TwitterAuth.ConsumerKey)
