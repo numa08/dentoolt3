@@ -1,0 +1,73 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ぬまぢお</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="Dentoo.LT 2013/4/14"/>
+        <meta name="viewroot" content="width=device-width"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
+        <script type="text/javascript" src="js/libs/jquery-1.9.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>ぬまぢお</h1>
+                <p>Dentoo.lt 2013/4/14</p>
+            </div>
+            <div class="row">
+                <p>番組にメッセージを送ることができます。裏でTwitterを使っているので、文字数制限があります。注意してください。</p>
+                <textarea rows="4" style="width: 400px" id="message"></textarea>
+                <div><input type="submit" value="送信" id="postButton"/></div>
+                <div id="postFinishMessage" style="display: none">送信完了。また送ってね。</div>
+                <div id="postingMessage" style="display: none">送信中...</div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var postMessage = function(){
+                $("#postButton").css("display", "none");
+                $("#postingMessage").css("display","");
+                var message = $("#message").val();
+                if(message.length < 1){
+                    postFinish();
+                }
+                var data ={"text" : message};
+                $.ajax({
+                    contentType:"application/json",
+                    data:JSON.stringify(data),
+                    error: onError,
+                    success: onSuccess,
+                    complete: postFinish,
+                    type:"POST",
+                    url : "/dentoolt/send",
+                    cache: false,
+                    dataType: "json"
+                });
+            };
+            
+            var onError =  function(XMLHTTPRequest, errorState, errorThrown){
+                console.log("have error");
+                console.log(errorState);
+                console.log(XMLHTTPRequest);
+            };
+            
+            var onSuccess = function(data, dataType){
+              Console.log("post success");
+              Console.log(data);
+            };
+            var postFinish = function(){
+                $("#postingMessage").css("display", "none");
+                $("#postFinishMessage").css("display", "");
+                $("#postButton").css("display", "");                
+                $("#postFinishMessage").fadeOut(5000);
+            };
+            
+            $("#postButton").click(postMessage);
+        </script>
+        
+    </body>
+</html>
